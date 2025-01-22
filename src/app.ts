@@ -2,7 +2,7 @@ import * as path from 'node:path';
 import AutoLoad, {AutoloadPluginOptions} from '@fastify/autoload';
 import { FastifyPluginAsync } from 'fastify';
 import { fileURLToPath } from 'node:url'
-import Dotenv from 'dotenv';
+import 'dotenv/config'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -21,9 +21,7 @@ const app: FastifyPluginAsync<AppOptions> = async (
     opts
 ): Promise<void> => {
   // Place here your custom code!
-  
-  // Configure env
-  Dotenv.config()
+  console.log(process.env) // remove this after you've confirmed it is working
 
   // Do not touch the following lines
 
