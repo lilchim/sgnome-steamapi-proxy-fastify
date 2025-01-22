@@ -12,26 +12,20 @@ const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.register(HttpProxy, {
     upstream: process.env.STEAM_URL || 'http://api.steampowered.com',
     preHandler: async (request, reply) => {
-      // Type assertion to SteamRequest
+      // Re-Type the interface to access arbitrary parameters
       const steamRequest = request as SteamRequest;
 
-      // Log the original query parameters
       steamRequest.log.info(`Original query: ${JSON.stringify(steamRequest.query)}`);
 
       // Parse the incoming query string
       const originalQueryString = request.raw.url?.split('?')[1] || '';
       const parsedQuery = new URLSearchParams(originalQueryString);
       
-      // Add the 'key' parameter to the query string
+      // Inject the steam key and rewrite the url
       parsedQuery.set('key', process.env.STEAM_API_KEY || 'null');
-      
-      // Construct the new URL
       const newUrl = `${request.raw.url?.split('?')[0]}?${parsedQuery.toString()}`;
 
-      // Set the modified URL in the request
       request.raw.url = newUrl;
-
-      // Log the modified query string for debugging
       steamRequest.log.info(`Modified query: ${parsedQuery.toString()}`);
     }
   });

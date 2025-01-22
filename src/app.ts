@@ -21,7 +21,6 @@ const app: FastifyPluginAsync<AppOptions> = async (
     opts
 ): Promise<void> => {
   // Place here your custom code!
-  console.log(process.env) // remove this after you've confirmed it is working
 
   // Do not touch the following lines
 

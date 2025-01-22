@@ -2,7 +2,7 @@
   "type": "module",
   "name": "sgnome-steamapi-proxy-fastify",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with Fastify-CLI.",
+  "description": "A SteamAPI Proxy built in fastify. Proxies all requests to the Steam API and injects an API key from .env",
   "main": "app.ts",
   "directories": {
     "test": "test"
@@ -21,26 +21,24 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache 2.0",
   "bugs": {
     "url": "https://github.com/lilchim/sgnome-steamapi-proxy-fastify/issues"
   },
   "homepage": "https://github.com/lilchim/sgnome-steamapi-proxy-fastify#readme",
   "dependencies": {
+    "fastify": "^5.0.0",
+    "fastify-plugin": "^5.0.0",
     "@fastify/autoload": "^6.0.0",
     "@fastify/sensible": "^6.0.0",
-    "fastify": "^5.0.0",
-    "fastify-cli": "^7.3.0",
-    "fastify-plugin": "^5.0.0"
+    "fastify-cli": "^7.3.0"
   },
   "devDependencies": {
-    "@fastify/http-proxy": "^11.0.1",
     "@types/node": "^22.1.0",
     "c8": "^10.1.2",
-    "concurrently": "^9.0.0",
-    "dotenv": "^16.4.7",
-    "fastify-tsconfig": "^2.0.0",
     "ts-node": "^10.4.0",
+    "concurrently": "^9.0.0",
+    "fastify-tsconfig": "^2.0.0",
     "typescript": "~5.6.3"
   }
 }
